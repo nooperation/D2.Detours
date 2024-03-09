@@ -22,12 +22,16 @@ add_library(D2.Detours
     SHARED # We want to create a detours dll
     ${D2_detours_SOURCES} ${D2_detours_HEADERS}
 )
-target_include_directories(D2.Detours PUBLIC include)
+target_include_directories(D2.Detours 
+    PUBLIC 
+        include
+        ${Detours_SOURCE_DIR}/Detours/src
+)
 
 target_link_libraries(D2.Detours
     PRIVATE
         fmt::fmt
-        Detours::Detours
+        Detours
         # Required for some of the Windows libs we use
         Shlwapi.lib
         PathCch.lib
@@ -49,12 +53,16 @@ target_compile_definitions(D2.Detours
 
 add_executable(D2.DetoursLauncher src/DetoursLauncher.cpp)
 
-target_include_directories(D2.DetoursLauncher PRIVATE include)
+target_include_directories(D2.DetoursLauncher
+    PRIVATE
+        include
+        ${Detours_SOURCE_DIR}/Detours/src
+)
 
 target_link_libraries(D2.DetoursLauncher
     PRIVATE
         fmt::fmt
-        Detours::Detours
+        Detours
         PathCch.lib
 )
 

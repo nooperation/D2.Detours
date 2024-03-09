@@ -1,3 +1,6 @@
 [submodule "external/fmt"]
 	path = external/fmt
 	url = https://github.com/fmtlib/fmt.git
+[submodule "external/Detours/Detours"]
+	path = external/Detours/Detours
+	url = https://github.com/microsoft/Detours.git

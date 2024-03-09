@@ -14,8 +14,6 @@ target_set_warnings(fmt DISABLE ALL)              # Treat fmtlib as a system inc
 set_target_properties(fmt PROPERTIES FOLDER "external")
 
 #We use a prebuilt version of detours, this is fine for D2.
-add_library(Detours::Detours IMPORTED STATIC GLOBAL)
-set_target_properties(Detours::Detours PROPERTIES IMPORTED_LOCATION "${CMAKE_CURRENT_SOURCE_DIR}/Detours/lib.X86/detours.lib")
-target_include_directories(Detours::Detours INTERFACE "${CMAKE_CURRENT_SOURCE_DIR}/Detours/include")
+add_subdirectory(Detours)
 
 set(BUILD_TESTING ${BUILD_TESTING_BCKP} CACHE BOOL "Build tests (default variable for CTest)" FORCE) #Set it back to its past value
